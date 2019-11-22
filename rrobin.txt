@@ -1,0 +1,66 @@
+#include<stdio.h>
+int main()
+{
+	int n;
+	
+	scanf("%d",&n);
+	int tt[n],att=0;
+	char p[n][5];
+	int tq,pt[n],tot=0;
+	scanf("%d",&tq);
+	int pt2[n];
+	
+	for(int i=0;i<n;i++)
+	{
+		scanf("%s",&p[i]);
+		scanf("%d",&pt[i]);
+		pt2[i]=pt[i];
+		tot=tot+pt[i];
+		
+	}
+int count=0,wt[n];
+while(count<tot)
+{
+	for(int i=0;i<n;i++)
+	{
+		if(pt[i]==0)
+		{
+			continue;
+			
+		}
+		if(pt[i]<=tq)
+		{
+			count=count+pt[i];
+			pt[i]=0;
+			printf("\n%s in exe",p[i]);
+			wt[i]=count-pt2[i];
+			
+			
+		}
+		else
+		{pt[i]=pt[i]-tq;
+			count=count+tq;
+			printf("\n%s in exe",p[i]);
+		}
+	}
+}
+
+int xwt=0;
+for(int i=0;i<n;i++)
+{xwt+=wt[i];
+tt[i]=pt2[i]+wt[i];
+att+=tt[i];
+}
+
+printf("\n  waiting time :%d",xwt);
+printf("\n TT :%d",att);
+
+float awt,xtt;
+xtt=(float)att/n;
+awt=(float)xwt/n;
+printf("\n Average waiting time :%f",awt);
+printf("\n Average T time :%f",xtt);
+
+
+
+}
